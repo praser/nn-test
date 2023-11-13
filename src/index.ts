@@ -12,13 +12,13 @@ const capitalize = (word: string) =>
  * @param exclusion A space-separated list of words to exclude from title casing.
  * @returns The title cased string.
  */
-export const titleCase = (input: string, exclusion: string) => {
-  const exclusions = exclusion.split(' ').map((w) => w.toLowerCase())
+export const titleCase = (input: string, exclusion: string = '') => {
+  const exclusions: string[] = exclusion.split(' ').map((w) => w.toLowerCase());
 
-  return input
+  return input.toLowerCase()
     .split(' ')
-    .map((word) => {
-      if (exclusions.includes(word)) {
+    .map((word, index) => {
+      if (index > 0 && exclusions.includes(word)) {
         return word
       }
 
